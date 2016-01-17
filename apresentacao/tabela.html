@@ -1,0 +1,90 @@
+
+
+<!DOCTYPE html>
+<html>
+<head>
+<style>
+table {
+    width:100%;
+}
+table, th, td {
+    border: 1px solid black;
+    border-collapse: collapse;
+}
+th, td {
+    padding: 5px;
+    text-align: left;
+}
+table#t01 tr:nth-child(even) {
+    background-color: #eee;
+}
+table#t01 tr:nth-child(odd) {
+   background-color:#fff;
+}
+table#t01 th	{
+    background-color: black;
+    color: white;
+}
+</style>
+
+<body>
+<h1>Pandlets Information</h1>
+
+
+
+<br>
+ 
+ <table id="t01">
+  <tr>
+    <th>ID</th>
+    <th>Username</th>		
+    <th>Name</th>
+    <th>Latitude</th>
+    <th>Longitude</th>
+    <th>Battery</th>
+  </tr>
+ <?
+
+include("phpsqlajax_dbinfo.php");
+
+$conn_string = "host=$host dbname=$database user=$username password=$password" ;
+$conn = pg_connect($conn_string);  
+if(!$conn){
+    die ("Could not open connection to database server");
+}
+$query = "SELECT * FROM setec.pandlets";
+$result = pg_query($conn, $query);
+if(!$result){
+    die('Invalid query : ' . pg_last_error());
+}
+
+
+
+$i = 0;
+
+
+while ($row = pg_fetch_row($result)) 
+{
+	echo '<tr>';
+	$count = count($row);
+	$y = 0;
+	while ($y < $count)
+	{
+		$c_row = current($row);
+		echo '<td>' . $c_row . '</td>';
+		next($row);
+		$y = $y + 1;
+	}
+	echo '</tr>';
+	$i = $i + 1;
+}
+pg_free_result($result);
+
+echo '</table>';
+?>
+
+
+
+</body>
+</html>
+
