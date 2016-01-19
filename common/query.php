@@ -26,7 +26,7 @@ class query {
 		return $result;
 	}
 
-	function getMaxMinHumAir()
+	function getMaxMinHumSoil()
 	{
 		$query = "SELECT pandlet, date, MAX(humsoil), MIN(humsoil) FROM readings GROUP BY pandlet, date order by date limit 30";
 		$result = pg_exec($conn, $query);
