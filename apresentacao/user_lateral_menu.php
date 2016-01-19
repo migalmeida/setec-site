@@ -26,7 +26,7 @@
                            <nav class="nav-primary hidden-xs">
                               <div class="text-muted text-sm hidden-nav-xs padder m-t-sm m-b-sm">Start</div>
                               <ul class="nav nav-main" data-ride="collapse">
-                                 <li class="active"> <a href="user_index.php" class="auto"> <i class="i i-stack icon"> </i> <span class="font-bold">Overview</span> </a> </li>
+                                 <li class="auto"> <a href="user_index.php" class="auto"> <i class="i i-stack icon"> </i> <span class="font-bold">Overview</span> </a> </li>
                                  <li >
                                     <a href="#" class="auto">
                                        <span class="pull-right text-muted">
@@ -37,16 +37,16 @@
                                        <span class="font-bold">Charts</span>
                                     </a>
                                  </li>
-                                 <li class="active"> <a href="user_charts_temp_air.php" class="auto"> <i class="i i-statistics icon"> </i> <span class="font-bold">Temperature of the air</span> </a> </li>
+                                 <li class="auto"> <a href="user_charts_temp_air.php" class="auto"> <i class="i i-statistics icon"> </i> <span class="font-bold">Temperature of the air</span> </a> </li>
                                  <li >
                                  </li>
-                                 <li class="active"> <a href="user_charts_temp_soil.php" class="auto"> <i class="i i-statistics icon"> </i> <span class="font-bold">Temperature of the soil</span> </a> </li>
+                                 <li class="auto"> <a href="user_charts_temp_soil.php" class="auto"> <i class="i i-statistics icon"> </i> <span class="font-bold">Temperature of the soil</span> </a> </li>
                                  <li >
                                  </li>
-                                 <li class="active"> <a href="user_charts_hum_air.php" class="auto"> <i class="i i-statistics icon"> </i> <span class="font-bold">Humidity of the air</span> </a> </li>
+                                 <li class="auto"> <a href="user_charts_hum_air.php" class="auto"> <i class="i i-statistics icon"> </i> <span class="font-bold">Humidity of the air</span> </a> </li>
                                  <li >
                                  </li>
-                                 <li class="active"> <a href="user_charts_hum_soil.php" class="auto"> <i class="i i-statistics icon"> </i> <span class="font-bold">Humidity of the soil</span> </a> </li>
+                                 <li class="auto"> <a href="user_charts_hum_soil.php" class="auto"> <i class="i i-statistics icon"> </i> <span class="font-bold">Humidity of the soil</span> </a> </li>
                                  <li >
 
                                  <li class="auto"> 
