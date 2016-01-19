@@ -119,7 +119,7 @@
 
                                                             <?php
 
-                                                                for($i=0; $row = pg_fetch_row($result); $i++)
+                                                                for($i=1; $row = pg_fetch_row($result); $i++)
                                                                     echo "{ y:$row[2], label: \"" . $i . "\"},"
                                                             ?>
 
@@ -134,7 +134,7 @@
 
                                                             <?php
 
-                                                            for($j=0; $row = pg_fetch_row($result); $j++)
+                                                            for($j=1; $row = pg_fetch_row($result); $j++)
                                                                 echo "{ y:$row[3], label: \"" . $j . "\"},"
                                                             ?>
 
