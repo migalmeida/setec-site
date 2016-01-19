@@ -76,12 +76,14 @@
                                                 axisY: {
                                                     title: "Humidity - kg/m3 (SI)",
                                                     titleFontFamily: "arial",
+                                                    labelFontSize: 13,
                                                     titleFontSize: 16
                                                 },
 
                                                 axisX: {
                                                     title: "Days",
                                                     titleFontFamily: "arial",
+                                                    labelFontSize: 13,
                                                     titleFontSize: 16
                                                 },
 
