@@ -10,6 +10,9 @@
       <link rel="stylesheet" href="css/app.v1.css" type="text/css" />
       <link rel="stylesheet" href="js/calendar/bootstrap_calendar.css" type="text/css" />
       <!--[if lt IE 9]> <script src="js/ie/html5shiv.js"></script> <script src="js/ie/respond.min.js"></script> <script src="js/ie/excanvas.js"></script> <![endif]-->
+
+      <script src="http://canvasjs.com/assets/script/canvasjs.min.js"></script>
+
    </head>
    <body class="" >
       <section class="vbox">
