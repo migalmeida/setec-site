@@ -44,11 +44,11 @@
                                     include_once ("common/query.php");
                                     $query = new query ();
                                     $result = $query->getMaxMinTempAir();
-                                    var_dump($result);
+                               
                                     ?>
 
 
-                                    <div id="chartContainer" style="height: 500px; width: 150%;"></div>
+                                    <div id="chartContainer" style="height: 300px; width: 100%;"></div>
 
 
                                     <script type="text/javascript">
@@ -125,7 +125,9 @@
 
 
                                                             <?php
-
+                                                            include_once ("common/query.php");
+                                                            $query = new query ();
+                                                            $result = $query->getMaxMinTempAir();
                                                             for($i=1; $row = pg_fetch_row($result); $i++)
                                                                 echo "{ y:$row[2], label: \"" . $i . "\"},"
                                                             ?>
