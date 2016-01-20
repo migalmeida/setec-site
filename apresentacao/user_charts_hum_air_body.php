@@ -37,7 +37,7 @@
                             <section>
                                 <header class="font-bold padder-v">
 
-                                    Humidity of the air register in the last 30 days
+                                
 
 
                                     <?php
@@ -57,7 +57,12 @@
                                                 theme: "theme1",//theme2
                                                 backgroundColor: "#E4EEF2",
                                                 title:{
-                                                    text: " "
+                                                    text: "Humidity of the air register in the last 30 days",
+                                                    fontColor: "#2f4f4f",
+                                                    fontSize: 20,
+                                                    padding: 10,
+                                                    margin: 15,
+                                                    fontWeight: "bold"
 
                                                 },
                                                 animationEnabled: true,   // change to true
