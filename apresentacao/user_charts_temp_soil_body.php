@@ -44,11 +44,10 @@
                                     include_once ("common/query.php");
                                     $query = new query ();
                                     $result = $query->getMaxMinTempSoil();
-                                    var_dump($result);
                                     ?>
 
 
-                                    <div id="chartContainer" style="height: 500px; width: 150%;"></div>
+                                    <div id="chartContainer" style="height: 300px; width: 100%;"></div>
 
 
                                     <script type="text/javascript">
@@ -140,7 +139,9 @@
                                                         dataPoints: [
 
                                                             <?php
-
+                                                            include_once ("common/query.php");
+                                                            $query = new query ();
+                                                            $result = $query->getMaxMinTempSoil();
                                                             for($j=1; $row = pg_fetch_row($result); $j++)
                                                                 echo "{ y:$row[3], label: \"" . $j . "\"},"
                                                             ?>
