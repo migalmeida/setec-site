@@ -37,13 +37,13 @@
                             <section>
                                 <header class="font-bold padder-v">
 
-                                    
 
 
                                     <?php
                                     include_once ("common/query.php");
                                     $query = new query ();
                                     $result = $query->getMaxMinHumSoil();
+                                    // var_dump($result);
                                     ?>
 
 
@@ -56,7 +56,7 @@
                                                 theme: "theme1",//theme2
                                                 backgroundColor: "#E4EEF2",
                                                 title:{
-                                                    text: "Humidity of the soil register in the last 30 days",
+                                                    text: "Humidity of the Soil register in the last 30 days",
                                                     fontColor: "#2f4f4f",
                                                     fontSize: 20,
                                                     padding: 10,
@@ -79,16 +79,16 @@
                                                 },
                                                 axisY: {
                                                     title: "Humidity - kg/m3 (SI)",
-                                                    titleFontFamily: "arial",
+                                                    titleFontFamily: "Helvetica",
                                                     labelFontSize: 13,
-                                                    titleFontSize: 16
+                                                    titleFontSize: 14
                                                 },
 
                                                 axisX: {
                                                     title: "Days",
-                                                    titleFontFamily: "arial",
+                                                    titleFontFamily: "Helvetica",
                                                     labelFontSize: 13,
-                                                    titleFontSize: 16
+                                                    titleFontSize: 14
                                                 },
 
                                                 toolTip: {
@@ -119,14 +119,15 @@
                                                         type: "spline",
                                                         showInLegend: true,
                                                         name: "Maximum",
-                                                        color: "#333300 ",
+                                                        color: "#009900  ",
                                                         dataPoints:  [
 
 
                                                             <?php
 
-                                                            for($i=1; $row = pg_fetch_row($result); $i++)
-                                                                echo "{ y:$row[2], label: \"" . $i . "\"},"
+                                                            for($i=1; $row = pg_fetch_row($result); $i++) {
+                                                                echo "{ y:$row[2]},";
+                                                            }
                                                             ?>
 
                                                         ]
@@ -135,15 +136,17 @@
                                                         type: "spline",
                                                         showInLegend: true,
                                                         name: "Minimum",
-                                                        color: "#CC6600 ",
+
+                                                        color: "#99CC00 ",
                                                         dataPoints: [
 
                                                             <?php
                                                             include_once ("common/query.php");
                                                             $query = new query ();
                                                             $result = $query->getMaxMinHumSoil();
-                                                            for($j=1; $row = pg_fetch_row($result); $j++)
-                                                                echo "{ y:$row[3], label: \"" . $j . "\"},"
+
+                                                            for($j=1; $row = pg_fetch_row($result); $j++){
+                                                                echo "{ y:$row[3], label:$j},";}
                                                             ?>
 
                                                         ]
@@ -179,3 +182,6 @@
 <!-- Bootstrap --> <!-- App --> <script src="js/app.v1.js"></script> <script src="js/charts/easypiechart/jquery.easy-pie-chart.js"></script> <script src="js/charts/sparkline/jquery.sparkline.min.js"></script> <script src="js/charts/flot/jquery.flot.min.js"></script> <script src="js/charts/flot/jquery.flot.tooltip.min.js"></script> <script src="js/charts/flot/jquery.flot.spline.js"></script> <script src="js/charts/flot/jquery.flot.pie.min.js"></script> <script src="js/charts/flot/jquery.flot.resize.js"></script> <script src="js/charts/flot/jquery.flot.grow.js"></script> <script src="js/charts/flot/demo.js"></script> <script src="js/calendar/bootstrap_calendar.js"></script> <script src="js/calendar/demo.js"></script> <script src="js/sortable/jquery.sortable.js"></script> <script src="js/app.plugin.js"></script>
 </body>
 </html>
+
+
+

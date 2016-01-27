@@ -37,18 +37,16 @@
                             <section>
                                 <header class="font-bold padder-v">
 
-                             
 
 
                                     <?php
                                     include_once ("common/query.php");
                                     $query = new query ();
                                     $result = $query->getMaxMinTempSoil();
-                                    var_dump($result);
                                     ?>
 
 
-                                    <div id="chartContainer" style="height: 500px; width: 150%;"></div>
+                                    <div id="chartContainer" style="height: 300px; width: 100%;"></div>
 
 
                                     <script type="text/javascript">
@@ -56,6 +54,7 @@
                                             var chart = new CanvasJS.Chart("chartContainer", {
                                                 theme: "theme1",//theme2
                                                 backgroundColor: "#E4EEF2",
+
                                                 title:{
                                                     text: "Temperature of the soil register in the last 30 days",
                                                     fontColor: "#2f4f4f",
@@ -80,16 +79,16 @@
                                                 },
                                                 axisY: {
                                                     title: "Temperature - Celsius",
-                                                    titleFontFamily: "arial",
+                                                    titleFontFamily: "Helvetica",
                                                     labelFontSize: 13,
-                                                    titleFontSize: 16
+                                                    titleFontSize: 14
                                                 },
 
                                                 axisX: {
                                                     title: "Days",
-                                                    titleFontFamily: "arial",
+                                                    titleFontFamily: "Helvetica",
                                                     labelFontSize: 13,
-                                                    titleFontSize: 16
+                                                    titleFontSize: 14
                                                 },
 
                                                 toolTip: {
@@ -127,7 +126,7 @@
                                                             <?php
 
                                                             for($i=1; $row = pg_fetch_row($result); $i++)
-                                                                echo "{ y:$row[2], label: \"" . $i . "\"},"
+                                                                echo "{ y:$row[2], label: $i},"
                                                             ?>
 
                                                         ]
@@ -141,8 +140,12 @@
 
                                                             <?php
 
+                                                             include_once ("common/query.php");
+                                                             $query = new query ();
+                                                             $result = $query->getMaxMinTempSoil();
+
                                                             for($j=1; $row = pg_fetch_row($result); $j++)
-                                                                echo "{ y:$row[3], label: \"" . $j . "\"},"
+                                                                echo "{ y:$row[3], label: $j},"
                                                             ?>
 
                                                         ]

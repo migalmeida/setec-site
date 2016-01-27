@@ -13,3 +13,4 @@ $conn_string = "host= db.fe.up.pt dbname=ee11134 user=ee11134 password=setec";
   $queryZ = "set search_path to \"setec\";";
 	$resultZ = pg_exec($conn, $queryZ);
 ?>
+

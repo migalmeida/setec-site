@@ -44,6 +44,7 @@
                                     </section>
                                  </div>
                               </div>
+			      <!-- Statistics -->
                               <div class="row bg-light dk m-b">
                                  <div class="col-md-6 dker">
                                     <section>
@@ -72,6 +73,7 @@
                                        </div>
                                     </section>
                                  </div>
+				 <!-- Analysis -->
                                  <div class="col-md-6">
                                     <section>
                                        <header class="font-bold padder-v">
@@ -94,7 +96,9 @@
                                        </div>
                                     </section>
                                  </div>
+				 
                               </div>
+			      <!-- Calendar -->
                               <div class="row">
                                  <div class="col-md-4">
                                     <section class="panel b-a">

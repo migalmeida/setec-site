@@ -37,14 +37,13 @@
                             <section>
                                 <header class="font-bold padder-v">
 
-                                
 
 
                                     <?php
                                     include_once ("common/query.php");
                                     $query = new query ();
                                     $result = $query->getMaxMinHumAir();
-                        
+                                   // var_dump($result);
                                     ?>
 
 
@@ -80,16 +79,16 @@
                                                 },
                                                 axisY: {
                                                     title: "Humidity - kg/m3 (SI)",
-                                                    titleFontFamily: "arial",
+                                                    titleFontFamily: "Helvetica",
                                                     labelFontSize: 13,
-                                                    titleFontSize: 16
+                                                    titleFontSize: 14
                                                 },
 
                                                 axisX: {
                                                     title: "Days",
-                                                    titleFontFamily: "arial",
+                                                    titleFontFamily: "Helvetica",
                                                     labelFontSize: 13,
-                                                    titleFontSize: 16
+                                                    titleFontSize: 14
                                                 },
 
                                                 toolTip: {
@@ -126,8 +125,9 @@
 
                                                             <?php
 
-                                                                for($i=1; $row = pg_fetch_row($result); $i++)
-                                                                    echo "{ y:$row[2], label: \"" . $i . "\"},"
+                                                                for($i=1; $row = pg_fetch_row($result); $i++) {
+                                                                    echo "{ y:$row[2]},";
+                                                            }
                                                             ?>
 
                                                         ]
@@ -136,15 +136,17 @@
                                                         type: "spline",
                                                         showInLegend: true,
                                                         name: "Minimum",
+
                                                         color: "#99CC00 ",
                                                         dataPoints: [
 
                                                             <?php
-                                                                include_once ("common/query.php");
-                                                                $query = new query ();
-                                                                $result = $query->getMaxMinHumAir();
-                                                            for($j=1; $row = pg_fetch_row($result); $j++)
-                                                                echo "{ y:$row[3], label: \"" . $j . "\"},"
+                                                              include_once ("common/query.php");
+                                                              $query = new query ();
+                                                              $result = $query->getMaxMinHumAir();
+
+                                                            for($j=1; $row = pg_fetch_row($result); $j++){
+                                                                echo "{ y:$row[3], label:$j},";}
                                                             ?>
 
                                                         ]

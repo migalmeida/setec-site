@@ -37,7 +37,7 @@
                                     <section>
                                        <header class="font-bold padder-v">
                                          
-                                          Pandlets Information 
+                                          <h1>Pandlets Information </h1>
 										  <style>
 											table {
 												width:100%;
@@ -118,7 +118,100 @@
                                     </section>
                                  </div>
                               </div>
+							  
+							  <div class="row bg-light dk m-b">
+                                
+                                 <div class="col-md-6">
+                                    <section>
+                                       <header class="font-bold padder-v">
+                                        
+    
+						<script src="https://maps.googleapis.com/maps/api/js"></script>
+						  <script> 
+						    
+
+						    function load() {
+						      var map = new google.maps.Map(document.getElementById("map"), {
+							center: new google.maps.LatLng( 41.17798272051,  -8.59524071216583),
+							zoom: 15,
+							mapTypeId: 'roadmap'
+						      });
+				
+						      // Change this depending on the name of your PHP file
+						      downloadUrl("apresentacao/mapa_bd.php", function(data) {
+							var xml = data.responseXML;
+							var markers = xml.documentElement.getElementsByTagName("pandlets");
+							for (var i = 0; i < markers.length ; i++) {
+							  var id = markers[i].getAttribute("id");
+							  var username = markers[i].getAttribute("username");
+							  var name = markers[i].getAttribute("name");
+							  var point = new google.maps.LatLng(
+							      parseFloat(markers[i].getAttribute("lat")),
+							      parseFloat(markers[i].getAttribute("lng")));
+							  var battery = markers[i].getAttribute("battery");
+							
+						       // var contentString = name;
+
+							  var infowindow = new google.maps.InfoWindow({
+										content: name,
+									});
+									
+								var marker = new google.maps.Marker({
+							    position: point,
+							    title: name         
+							  });
+							   marker.setMap(map);
+						     
+								google.maps.event.addListener(marker, 'click', function() {
+									
+									//infowindow.setContent(marker);
+									infowindow.open(map, this);
+								
+								});
+							  
+							   
+							}
+							 google.maps.event.addDomListener(window, 'load', initialize);
+						      });
+						    }
+							
+
+
+						    function downloadUrl(url, callback) {
+						      var request = window.ActiveXObject ?
+							  new ActiveXObject('Microsoft.XMLHTTP') :
+							  new XMLHttpRequest;
+
+						      request.onreadystatechange = function() {
+							if (request.readyState == 4) {
+							  request.onreadystatechange = doNothing;
+							  callback(request, request.status);
+							}
+						      };
+
+						      request.open('GET', url, true);
+						      request.send(null);
+						    }
+
+						    function doNothing() {}
+
+
+						  </script>
+											      
+					    
+					   </header>
+					  <body onload="load()">
+					<h1>Pandlets Location </h1>
+					<div id="map" style="width: 500px; height: 300px"></div>
+					</body>
+			
+				        
+                                    </section>
+                                 </div>
+                              </div>
                               <div class="row">
+							 
+								
                             
                               </div>
                            </section>
