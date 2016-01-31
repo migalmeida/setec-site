@@ -158,7 +158,7 @@
 							zoom: 15,
 							mapTypeId: 'roadmap'
 						      });
-				
+								var infowindow = new google.maps.InfoWindow;
 						      // Change this depending on the name of your PHP file
 						      downloadUrl("apresentacao/mapa_bd.php", function(data) {
 							var xml = data.responseXML;
@@ -174,40 +174,37 @@
 							
 						       // var contentString = name;
 
-							  var infowindow = new google.maps.InfoWindow({
-										content: name,
-									});
+							  
 									
 								var marker = new google.maps.Marker({
 							    position: point,
-							    title: name         
+							    title: username         
 							  });
-							  
-							  marker.setMap(map);
+
+									
+							bindInfoWindow(marker, map, infowindow, name);  
+							marker.setMap(map);
 						    
 							
-								google.maps.event.addListener(marker, 'mouseover', function() {
-									
-									//infowindow.setContent(marker);
-									
-									infowindow.open(map, this);
-									
-								
-								});
 								
 							    
 							    
 							}
+							});
 							
-							 google.maps.event.addDomListener(window, 'load', initialize);
-							 marker.push(marker);
-							 
-						      });
+							
 							  
 						    }
 							
 
-
+							function bindInfoWindow(marker, map, infoWindow, html) {
+							  google.maps.event.addListener(marker, 'mouseover', function() {
+								infoWindow.setContent(html);
+								infoWindow.open(map, marker);
+							  });
+							}
+							  
+							  
 						    function downloadUrl(url, callback) {
 						      var request = window.ActiveXObject ?
 							  new ActiveXObject('Microsoft.XMLHTTP') :
