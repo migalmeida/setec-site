@@ -36,6 +36,16 @@ class query {
 		$result = pg_exec($conn, $query);
 		return $result;
 	}
+
+	function getImages()
+	{
+		global $conn;
+		$query = "SELECT date, image FROM readings WHERE image IS NOT NULL"
+		$result = pg_exec($conn, $query);
+		return $result;
+		// use pg_unescape_bytea to convert image to unescaped first
+		// use imagecreatefromstring afterwards
+	}
 }
 
 ?>
