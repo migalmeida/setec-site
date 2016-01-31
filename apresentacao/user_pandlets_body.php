@@ -177,8 +177,8 @@
 							  
 									
 								var marker = new google.maps.Marker({
-							    position: point,
-							    title: username         
+							    position: point
+							    //title: username         
 							  });
 
 									

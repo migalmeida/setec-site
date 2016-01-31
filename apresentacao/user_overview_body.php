@@ -9,11 +9,12 @@
                            <section class="scrollable padder">
                               <section class="row m-b-md">
                                  <div class="col-sm-6">
-                                    <h3 class="m-b-xs text-black">Dashboard</h3>
-                                    <small>Welcome back, <?php echo $_SESSION['username']; ?></small>
+                                    <h3 class="m-b-xs text-black">Welcome</h3>
+                                    <small> <?php echo $_SESSION['username']; ?></small>
                                  </div>
                               </section>
-                              <div class="row">
+							  <!---- Primeiro quadrito ---->
+                              <!----<div class="row">
                                  <div class="col-sm-6">
                                     <div class="panel b-a">
                                        <div class="row m-n">
@@ -43,8 +44,111 @@
                                        </div>
                                     </section>
                                  </div>
+                              </div>---->
+			      <!-- PANDLETS MAP -->
+				  
+				  
+				  
+				  
+				   <div class="row bg-light dk m-b">
+                                
+                                 <div class="col-md-6">
+                                    <section>
+                                       <header class="font-bold padder-v">
+                                        
+    
+						<script src="https://maps.googleapis.com/maps/api/js"></script>
+						  <script> 
+						    
+
+						    function load() {
+						      var map = new google.maps.Map(document.getElementById("map"), {
+							center: new google.maps.LatLng( 41.17798272051,  -8.59524071216583),
+							zoom: 15,
+							mapTypeId: 'roadmap'
+						      });
+								var infowindow = new google.maps.InfoWindow;
+						      // Change this depending on the name of your PHP file
+						      downloadUrl("apresentacao/mapa_bd.php", function(data) {
+							var xml = data.responseXML;
+							var markers = xml.documentElement.getElementsByTagName("pandlets");
+							for (var i = 0; i < markers.length ; i++) {
+							  var id = markers[i].getAttribute("id");
+							  var username = markers[i].getAttribute("username");
+							  var name = markers[i].getAttribute("name");
+							  var point = new google.maps.LatLng(
+							      parseFloat(markers[i].getAttribute("lat")),
+							      parseFloat(markers[i].getAttribute("lng")));
+							  var battery = markers[i].getAttribute("battery");
+							
+						       // var contentString = name;
+
+							  
+									
+								var marker = new google.maps.Marker({
+							    position: point
+							    //title: username         
+							  });
+
+									
+							bindInfoWindow(marker, map, infowindow, name);  
+							marker.setMap(map);
+						    
+							
+								
+							    
+							    
+							}
+							});
+							
+							
+							  
+						    }
+							
+
+							function bindInfoWindow(marker, map, infoWindow, html) {
+							  google.maps.event.addListener(marker, 'mouseover', function() {
+								infoWindow.setContent(html);
+								infoWindow.open(map, marker);
+							  });
+							}
+							  
+							  
+						    function downloadUrl(url, callback) {
+						      var request = window.ActiveXObject ?
+							  new ActiveXObject('Microsoft.XMLHTTP') :
+							  new XMLHttpRequest;
+
+						      request.onreadystatechange = function() {
+							if (request.readyState == 4) {
+							  request.onreadystatechange = doNothing;
+							  callback(request, request.status);
+							}
+						      };
+
+						      request.open('GET', url, true);
+						      request.send(null);
+						    }
+
+						    function doNothing() {}
+
+
+						  </script>
+											      
+					    
+					   </header>
+					  <body onload="load()">
+					<h1>Pandlets Location </h1>
+					<div id="map" style="width: 800px; height: 400px"></div>
+					</body>
+			
+				        
+                                    </section>
+                                 </div>
                               </div>
-			      <!-- Statistics -->
+							 
+							      <!-- Statistics --> 
+								   <!--
                               <div class="row bg-light dk m-b">
                                  <div class="col-md-6 dker">
                                     <section>
@@ -72,8 +176,9 @@
                                           <div class="col-xs-3"> <span class="h4 font-bold m-t block">7,230</span> <small class="text-muted m-b block">Customers</small> </div>
                                        </div>
                                     </section>
-                                 </div>
+                                 </div> -->
 				 <!-- Analysis -->
+				 <!--
                                  <div class="col-md-6">
                                     <section>
                                        <header class="font-bold padder-v">
@@ -97,10 +202,12 @@
                                     </section>
                                  </div>
 				 
-                              </div>
+                              </div> 
+							  -->
 			      <!-- Calendar -->
                               <div class="row">
-                                 <div class="col-md-4">
+                                 <!--<div class="col-md-4">
+								 
                                     <section class="panel b-a">
                                        <div class="panel-heading b-b"> <span class="badge bg-warning pull-right">10</span> <a href="#" class="font-bold">Messages</a> </div>
                                        <ul class="list-group list-group-lg no-bg auto"> <a href="#" class="list-group-item clearfix"> <span class="pull-left thumb-sm avatar m-r"> <img src="images/a4.png" alt="..."> <i class="on b-white bottom"></i> </span> <span class="clear"> <span>Chris Fox</span> <small class="text-muted clear text-ellipsis">What's up, buddy</small> </span> </a> <a href="#" class="list-group-item clearfix"> <span class="pull-left thumb-sm avatar m-r"> <img src="images/a5.png" alt="..."> <i class="on b-white bottom"></i> </span> <span class="clear"> <span>Amanda Conlan</span> <small class="text-muted clear text-ellipsis">Come online and we need talk about the plans that we have discussed</small> </span> </a> <a href="#" class="list-group-item clearfix"> <span class="pull-left thumb-sm avatar m-r"> <img src="images/a6.png" alt="..."> <i class="busy b-white bottom"></i> </span> <span class="clear"> <span>Dan Doorack</span> <small class="text-muted clear text-ellipsis">Hey, Some good news</small> </span> </a> <a href="#" class="list-group-item clearfix"> <span class="pull-left thumb-sm avatar m-r"> <img src="images/a7.png" alt="..."> <i class="away b-white bottom"></i> </span> <span class="clear"> <span>Lauren Taylor</span> <small class="text-muted clear text-ellipsis">Nice to talk with you.</small> </span> </a> </ul>
@@ -108,12 +215,12 @@
                                           <div class="input-group"> <input type="text" class="form-control input-sm btn-rounded" placeholder="Search"> <span class="input-group-btn"> <button type="submit" class="btn btn-default btn-sm btn-rounded"><i class="fa fa-search"></i></button> </span> </div>
                                        </div>
                                     </section>
-                                 </div>
+                                 </div>-->
                                  <div class="col-md-4">
                                     <section class="panel b-light">
                                        <header class="panel-heading"><strong>Calendar</strong></header>
                                        <div id="calendar" class="bg-light dker m-l-n-xxs m-r-n-xxs"></div>
-                                       <div class="list-group"> <a href="#" class="list-group-item text-ellipsis"> <span class="badge bg-warning">7:30</span> Meet a friend </a> <a href="#" class="list-group-item text-ellipsis"> <span class="badge bg-success">9:30</span> Have a kick off meeting with .inc company </a> </div>
+                                      
                                     </section>
                                  </div>
                               </div>
@@ -121,6 +228,7 @@
                         </section>
                      </section>
                      <!-- side content --> 
+					 <!--
                      <aside class="aside-md bg-black hide" id="sidebar">
                         <section class="vbox animated fadeInRight">
                            <section class="scrollable">
@@ -172,7 +280,7 @@
                               </ul>
                            </section>
                         </section>
-                     </aside>
+                     </aside> -->
                      <!-- / side content --> 
                   </section>
                   <a href="#" class="hide nav-off-screen-block" data-toggle="class:nav-off-screen,open" data-target="#nav,html"></a> 
