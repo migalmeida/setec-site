@@ -69,7 +69,8 @@
 											<th>Name</th>
 											<th>Latitude</th>
 											<th>Longitude</th>
-											<th>Battery</th>
+											<th>Status</th>
+											<th>Webcam</th>
 										  </tr>
 										  <?
 
@@ -98,8 +99,29 @@
 											$y = 0;
 											while ($y < $count)
 											{
+												
 												$c_row = current($row);
-												echo '<td>' . $c_row . '</td>';
+												if($c_row == 'f' && $y==5)
+												{
+													echo '<td style="text-align:center;">' . 'Off'. '</td>';
+												}
+												else if($c_row == 't' && $y==5)
+												{
+													echo '<td style="text-align:center;">' . 'On'. '</td>';
+												}
+												else if($c_row == 'f' && $y==6)
+												{
+													echo '<td style="text-align:center;">' . 'No'. '</td>';
+												}
+												else if($c_row == 't' && $y==6)
+												{
+													echo '<td style="text-align:center;">' . 'Yes'. '</td>';
+												}
+												
+											else{
+												echo '<td style="text-align:center;">' . $c_row . '</td>';
+											}
+												
 												next($row);
 												$y = $y + 1;
 											}
@@ -160,19 +182,28 @@
 							    position: point,
 							    title: name         
 							  });
-							   marker.setMap(map);
-						     
-								google.maps.event.addListener(marker, 'click', function() {
+							  
+							  marker.setMap(map);
+						    
+							
+								google.maps.event.addListener(marker, 'mouseover', function() {
 									
 									//infowindow.setContent(marker);
+									
 									infowindow.open(map, this);
+									
 								
 								});
-							  
-							   
+								
+							    
+							    
 							}
+							
 							 google.maps.event.addDomListener(window, 'load', initialize);
+							 marker.push(marker);
+							 
 						      });
+							  
 						    }
 							
 

@@ -42,7 +42,7 @@
                                     <?php
                                     include_once ("common/query.php");
                                     $query = new query ();
-                                    $result = $query->getMaxMinHumSoil();
+                                   $result = $query->getMaxMinHumSoil();
                                     // var_dump($result);
                                     ?>
 
@@ -75,6 +75,7 @@
                                                             e.dataSeries.visible = true;
                                                         }
                                                         chart.render();
+														
                                                     }
                                                 },
                                                 axisY: {
@@ -128,6 +129,7 @@
                                                             for($i=1; $row = pg_fetch_row($result); $i++) {
                                                                 echo "{ y:$row[2]},";
                                                             }
+															clearstatcache();
                                                             ?>
 
                                                         ]
@@ -147,6 +149,7 @@
 
                                                             for($j=1; $row = pg_fetch_row($result); $j++){
                                                                 echo "{ y:$row[3], label:$j},";}
+																clearstatcache();
                                                             ?>
 
                                                         ]
@@ -156,7 +159,8 @@
                                                 ]
                                             });
                                             chart.render();
-                                        }
+	                                   }
+										
                                     </script>
 
                                 </header>
