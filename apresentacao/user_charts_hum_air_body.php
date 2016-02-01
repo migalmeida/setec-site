@@ -42,7 +42,14 @@
                                     <?php
                                     include_once ("common/query.php");
                                     $query = new query ();
-                                    $result = $query->getMaxMinHumAir();
+									$pandlet='A';
+									
+									echo $pandlet;
+                                    $result = $query->getMaxMinHumAir($pandlet);
+								
+								
+									//echo $result;
+									//echo $pandlet;
                                    // var_dump($result);
                                     ?>
 
@@ -125,7 +132,8 @@
 
                                                             <?php
 
-                                                                for($i=1; $row = pg_fetch_row($result); $i++) {
+                                                                for($i=1; $row = pg_fetch_row($result) ; $i++) {
+																	
                                                                     echo "{ y:$row[2]},";
                                                             }
                                                             ?>
@@ -143,9 +151,12 @@
                                                             <?php
                                                               include_once ("common/query.php");
                                                               $query = new query ();
-                                                              $result = $query->getMaxMinHumAir();
+															  $pandlet='A';
+															 /// echo $pandlet;
+                                                              $result = $query->getMaxMinHumAir($pandlet);
 
                                                             for($j=1; $row = pg_fetch_row($result); $j++){
+																
                                                                 echo "{ y:$row[3], label:$j},";}
                                                             ?>
 
@@ -165,6 +176,9 @@
                         </div>
                     </div>
                     <div class="row">
+					
+					
+					
 
                     </div>
                 </section>
