@@ -36,14 +36,14 @@
                         <div class="col-md-6">
                             <section>
                                 <header class="font-bold padder-v">
-
+									<h1>Pandlet A</h1>
 
 
                                     <?php
                                     include_once ("common/query.php");
                                     $query = new query ();
-									$pandlet='A';
-									echo $pandlet;
+									$pandlet='A1';
+									//echo $pandlet;
                                    $result = $query->getMaxMinHumSoil($pandlet);
                                     // var_dump($result);
                                     ?>
@@ -147,7 +147,7 @@
                                                             <?php
                                                             include_once ("common/query.php");
                                                             $query = new query ();
-															$pandlet='A';
+															$pandlet='A1';
                                                             $result = $query->getMaxMinHumSoil($pandlet);
 
                                                             for($j=1; $row = pg_fetch_row($result); $j++){
@@ -172,13 +172,14 @@
                         </div>
 
                     </div>
-                    <div class="row">
+                
 					
 					<div class="row bg-light dk m-b">
 
                         <div class="col-md-6">
                             <section>
                                 <header class="font-bold padder-v">
+								<h1>Pandlet B</h1>
 
 
 
@@ -186,7 +187,7 @@
                                     include_once ("common/query.php");
                                     $query = new query ();
 									$pandlet='B';
-									echo $pandlet;
+									//echo $pandlet;
                                    $result = $query->getMaxMinHumSoil($pandlet);
                                     // var_dump($result);
                                     ?>
@@ -290,7 +291,7 @@
                                                             <?php
                                                             include_once ("common/query.php");
                                                             $query = new query ();
-															$pandlet='B';
+															$pandlet='C';
                                                             $result = $query->getMaxMinHumSoil($pandlet);
 
                                                             for($j=1; $row = pg_fetch_row($result); $j++){
@@ -315,21 +316,21 @@
                         </div>
 
                     </div>
-                    <div class="row">
+                    
 					
 					<div class="row bg-light dk m-b">
 
                         <div class="col-md-6">
                             <section>
                                 <header class="font-bold padder-v">
-
+								<h1>Pandlet C</h1>
 
 
                                     <?php
                                     include_once ("common/query.php");
                                     $query = new query ();
 									$pandlet='C';
-									echo $pandlet;
+									//echo $pandlet;
                                    $result = $query->getMaxMinHumSoil($pandlet);
                                     // var_dump($result);
                                     ?>
@@ -435,7 +436,7 @@
                                                             <?php
                                                             include_once ("common/query.php");
                                                             $query = new query ();
-															$pandlet='B';
+															$pandlet='C';
                                                             $result = $query->getMaxMinHumSoil($pandlet);
 
                                                             for($j=1; $row = pg_fetch_row($result); $j++){
