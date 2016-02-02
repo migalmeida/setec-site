@@ -45,9 +45,16 @@ class query {
 	function getImages()
 	{
 		global $conn;
-		$query = "SELECT date, image FROM readings WHERE image IS NOT NULL";
+		$query = "SELECT image FROM readings WHERE image IS NOT NULL";
 		$result = pg_exec($conn, $query);
-		return $result;
+		
+		$index = 0;
+		while($row = pg_fetch_assoc($result)){ // loop to store the data in an associative array.
+			$derp[$index] = "data:image/jpeg;base64," . base64_encode(pg_unescape_bytea($row["image"]));
+			$index++;
+			}
+		
+		return $derp;
 		//use pg_unescape_bytea to convert image to unescaped first
 		// use imagecreatefromstring afterwards
 	}

@@ -81,25 +81,17 @@
                                     include_once ("common/query.php");
                                     $query = new query ();
                                     $result = $query->getImages();
-									$raw = pg_fetch_result($result, 'image');
-									  
-									  // Convert to binary and send to the browser
-									  header('Content-type: image/jpeg');
-									  $data= pg_unescape_bytea($raw);
-									  $im = imagecreatefromstring($data);
-										//if ($im !== false) {
-											//header('Content-Type: image/png');
-											//imagepng($im);
-											//imagedestroy($im);
-										//}
-										//else {
-											//echo 'An error occurred.';
-										//}
                                     ?>
+									
+								
 
 
 							</head>
 							<body>
+							
+							<script>if (Galleria) { $("body").text('Galleria works') }</script>
+							
+							<? if (sizeof($result) > 0) :?>
 
 							<div class="gallery" align="center">
 								
@@ -107,18 +99,24 @@
 								<br />
 
 								<div class="thumbnails">
+								
+									<?php
+										$end = sizeof($result);
+										for($i = 0; $i < $end; $i++){
+											echo "<img name=\"img".$i."\" onmouseover=\"preview.src='".$result[$i]."'\" src=\"".$result[$i]."\">";
+										}
+									?>
 							
-									<img onmouseover="preview.src=img1.src" name="img1" src="images/img1.jpg" alt=""/>
-									<img onmouseover="preview.src=img2.src" name="img2" src="images/img2.jpg" alt=""/>
-									<img onmouseover="preview.src=img3.src" name="img3" src="images/img3.jpg" alt=""/>
-									<img onmouseover="preview.src=img4.src" name="img4" src="images/img4.jpg" alt=""/>
-									<img onmouseover="preview.src=img5.src" name="img5" src="images/img5.jpg" alt=""/>
 									</div><br/>
 								</div><br/>
 
 								<div class="preview" align="center">
-									<img name="preview" src="images/img1.jpg" alt=""/>
+									<img name="preview" src="<?php echo $result[0] ?>" alt=""/>
 								</div>
+								
+							<? else : ?>
+								<p>Não há imagens</p>
+							<? endif; ?>
 
 							</div>
 
@@ -145,7 +143,7 @@
 </section>
 </section>
 </section>
-<!-- Bootstrap --> <!-- App --> <script src="js/app.v1.js"></script> <script src="js/charts/easypiechart/jquery.easy-pie-chart.js"></script> <script src="js/charts/sparkline/jquery.sparkline.min.js"></script> <script src="js/charts/flot/jquery.flot.min.js"></script> <script src="js/charts/flot/jquery.flot.tooltip.min.js"></script> <script src="js/charts/flot/jquery.flot.spline.js"></script> <script src="js/charts/flot/jquery.flot.pie.min.js"></script> <script src="js/charts/flot/jquery.flot.resize.js"></script> <script src="js/charts/flot/jquery.flot.grow.js"></script> <script src="js/charts/flot/demo.js"></script> <script src="js/calendar/bootstrap_calendar.js"></script> <script src="js/calendar/demo.js"></script> <script src="js/sortable/jquery.sortable.js"></script> <script src="js/app.plugin.js"></script>
+<!-- Bootstrap --> <!-- App --> <script src="js/app.v1.js"></script> <script src="js/charts/easypiechart/jquery.easy-pie-chart.js"></script> <script src="js/charts/sparkline/jquery.sparkline.min.js"></script> <script src="js/charts/flot/jquery.flot.min.js"></script> <script src="js/charts/flot/jquery.flot.tooltip.min.js"></script> <script src="js/charts/flot/jquery.flot.spline.js"></script> <script src="js/charts/flot/jquery.flot.pie.min.js"></script> <script src="js/charts/flot/jquery.flot.resize.js"></script> <script src="js/charts/flot/jquery.flot.grow.js"></script> <script src="js/charts/flot/demo.js"></script> <script src="js/calendar/bootstrap_calendar.js"></script> <script src="js/calendar/demo.js"></script> <script src="js/sortable/jquery.sortable.js"></script> <script src="js/app.plugin.js"></script> <script src="js/galleria/galleria-1.4.2.min.js"></script>
 </body>
 </html>
 
