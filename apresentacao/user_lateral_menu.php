@@ -41,6 +41,15 @@
                                  </li>
                                  <li class="auto"> <a href="user_charts_hum_soil.php" class="auto"> <i class="i i-statistics icon"> </i> <span class="font-bold">Humidity of the soil</span> </a> </li>
                                  <li >
+								 </li>
+                                 <li class="auto"> <a href="user_pandlets_charts_A.php" class="auto"> <i class="i i-statistics icon"> </i> <span class="font-bold">Pandlet A</span> </a> </li>
+                                 <li >
+								 </li>
+                                 <li class="auto"> <a href="user_pandlets_charts_B.php" class="auto"> <i class="i i-statistics icon"> </i> <span class="font-bold">Pandlet B</span> </a> </li>
+                                 <li >
+								 </li>
+                                 <li class="auto"> <a href="user_pandlets_charts_C.php" class="auto"> <i class="i i-statistics icon"> </i> <span class="font-bold">Pandlet C</span> </a> </li>
+                                 <li >
 
                                  <li class="auto"> 
                                    <a href="user_pandlets.php" class="active"> <span class="pull-right text-muted"> <i class="i i-circle-sm-o text"></i> <i class="i i-circle-sm text-active"></i> </span> <i class="fa fa-map-marker"> </i> <span class="font-bold">Pandlets Location</span> </a>
