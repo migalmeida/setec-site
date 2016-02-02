@@ -41,7 +41,8 @@
                                  </li>
                                  <li class="auto"> <a href="user_charts_hum_soil.php" class="auto"> <i class="i i-statistics icon"> </i> <span class="font-bold">Humidity of the soil</span> </a> </li>
                                  <li >
-								 </li>
+								 
+								  </li>
                                  <li class="auto"> <a href="user_pandlets_charts_A.php" class="auto"> <i class="i i-statistics icon"> </i> <span class="font-bold">Pandlet A</span> </a> </li>
                                  <li >
 								 </li>
@@ -56,9 +57,9 @@
 									
                                  </li>
 
-                                 <li >
-                                    <a href="#" class="auto"> <span class="pull-right text-muted"> <i class="i i-circle-sm-o text"></i> <i class="i i-circle-sm text-active"></i> </span> <i class="i i-docs icon"> </i> <span class="font-bold">Gallery</span> </a>
                                  </li>
+                                 <li class="auto"> <a href="user_gallery.php" class="auto"> <i class="i i-statistics icon"> </i> <span class="font-bold">Gallery</span> </a> </li>
+                                 <li >
                                  <li >
                                     <a href="#" class="auto"> <span class="pull-right text-muted"> <i class="i i-circle-sm-o text"></i> <i class="i i-circle-sm text-active"></i> </span> <i class="i i-grid2 icon"> </i> <span class="font-bold">Apps</span> </a>
                                  </li>
