@@ -36,17 +36,23 @@
                         <div class="col-md-6">
                             <section>
                                 <header class="font-bold padder-v">
-									<h1>Pandlet A</h1>
-
-
-                                    <?php
+									 <?php
                                     include_once ("common/query.php");
-                                    $query = new query ();
-									$pandlet='A1';
-									//echo $pandlet;
-                                   $result = $query->getMaxMinHumSoil($pandlet);
-                                    // var_dump($result);
+                                    $query2 = new query ();
+									$query = new query ();
+									
+
+									//for each (){}
+                                    $pandlets = $query2->getPandlet($_SESSION['username']);
+									
+									//$pandlets = $query2->getMaxMinHumSoil($result2[$i]);
+									
+									$pandlet=$pandlets[0];
+									
+                                    $result = $query->getMaxMinHumSoil($pandlets[0],$_SESSION['username']);
+									
                                     ?>
+								<h1>Pandlet <?php echo $pandlets[0];?></h1>
 
 
                                     <div id="chartContainer" style="height: 300px; width: 100%;"></div>
@@ -146,13 +152,12 @@
 
                                                             <?php
                                                             include_once ("common/query.php");
-                                                            $query = new query ();
-															$pandlet='A1';
-                                                            $result = $query->getMaxMinHumSoil($pandlet);
+                                                              $query = new query ();
+															  
+                                                               $result = $query->getMaxMinHumSoil($pandlet,$_SESSION['username']);
 
-                                                            for($j=1; $row = pg_fetch_row($result); $j++){
-                                                                echo "{ y:$row[3], label:$j},";}
-																clearstatcache();
+                                                                for($j=1; $row = pg_fetch_row($result); $j++)
+                                                                    echo "{ y:$row[3], label:$j},"
                                                             ?>
 
                                                         ]
@@ -179,17 +184,16 @@
                         <div class="col-md-6">
                             <section>
                                 <header class="font-bold padder-v">
-								<h1>Pandlet B</h1>
+								<h1>Pandlet <?php echo $pandlets[1];?></h1>
 
 
 
                                     <?php
                                     include_once ("common/query.php");
                                     $query = new query ();
-									$pandlet='B';
-									//echo $pandlet;
-                                   $result = $query->getMaxMinHumSoil($pandlet);
-                                    // var_dump($result);
+									$pandlet=$pandlets[1];
+                                    $result = $query->getMaxMinHumSoil($pandlet,$_SESSION['username']);
+
                                     ?>
 
 
@@ -289,14 +293,13 @@
                                                         dataPoints: [
 
                                                             <?php
-                                                            include_once ("common/query.php");
-                                                            $query = new query ();
-															$pandlet='C';
-                                                            $result = $query->getMaxMinHumSoil($pandlet);
+                                                             include_once ("common/query.php");
+                                                               $query = new query ();
+															   $pandlet = $pandlets[1];
+                                                               $result = $query->getMaxMinHumSoil($pandlet,$_SESSION['username']);
 
-                                                            for($j=1; $row = pg_fetch_row($result); $j++){
-                                                                echo "{ y:$row[3], label:$j},";}
-																clearstatcache();
+                                                                for($j=1; $row = pg_fetch_row($result); $j++)
+                                                                    echo "{ y:$row[3], label:$j},"
                                                             ?>
 
                                                         ]
@@ -323,16 +326,16 @@
                         <div class="col-md-6">
                             <section>
                                 <header class="font-bold padder-v">
-								<h1>Pandlet C</h1>
+								<h1>Pandlet <?php echo $pandlets[2];?></h1>
+
 
 
                                     <?php
                                     include_once ("common/query.php");
                                     $query = new query ();
-									$pandlet='C';
-									//echo $pandlet;
-                                   $result = $query->getMaxMinHumSoil($pandlet);
-                                    // var_dump($result);
+									$pandlet=$pandlets[2];
+                                    $result = $query->getMaxMinHumSoil($pandlet,$_SESSION['username']);
+
                                     ?>
 
 
@@ -434,14 +437,13 @@
                                                         dataPoints: [
 
                                                             <?php
-                                                            include_once ("common/query.php");
-                                                            $query = new query ();
-															$pandlet='C';
-                                                            $result = $query->getMaxMinHumSoil($pandlet);
+                                                             include_once ("common/query.php");
+                                                               $query = new query ();
+															   $pandlet = $pandlets[2];
+                                                               $result = $query->getMaxMinHumSoil($pandlet,$_SESSION['username']);
 
-                                                            for($j=1; $row = pg_fetch_row($result); $j++){
-                                                                echo "{ y:$row[3], label:$j},";}
-																clearstatcache();
+                                                                for($j=1; $row = pg_fetch_row($result); $j++)
+                                                                    echo "{ y:$row[3], label:$j},"
                                                             ?>
 
                                                         ]
