@@ -11,22 +11,31 @@
 
 	$query = "SELECT username, pass FROM users WHERE username='".$login."';";
 	$result = pg_exec($conn, $query);
-	echo
 
 
 	$queryZ = "SELECT * FROM admintable";
 	$resultZ = pg_exec($conn, $queryZ);
 
 	
-	if (pg_num_rows($resultZ) == 0)	
-	{
-		if(pg_num_rows($result) == 0)
+	if(pg_num_rows($result) == 0)
 		{
 			// header("Location: index.php");
 			header("Location: login.php");
+		} else
+		{
+			$var = pg_fetch_result($result, 0, 'pass');
+			if($pass_md5 == $var)
+			{
+				$_SESSION['tipo'] = 'Normal User';
+				$_SESSION['username'] = $login;
+				$_SESSION['tipo'] = $teste2;
+				header("Location: user_index.php");
+			} else
+			{
+				header("Location: login.php");
+			}
 		}
-	}
-	if (pg_num_rows($resultZ) == 0)	
+	/*if (pg_num_rows($resultZ) == 0)	
 	{
 		if(pg_num_rows($result) != 0)
 		{	
@@ -37,8 +46,8 @@
 			// header("Location: perfil.php");
 			header("Location: user_index.php");
 		}
-	}
-	if (pg_num_rows($resultZ) != 0)	
+	}*/
+	/*if (pg_num_rows($resultZ) != 0)	
 	{	
 			$_SESSION['username'] = $login;
 			$_SESSION['tipo'] = 'Super User';
@@ -46,5 +55,5 @@
 			header("Location: user_index.php");
 
 	}
-
+	*/
 ?>

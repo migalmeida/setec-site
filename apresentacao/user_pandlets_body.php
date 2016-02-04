@@ -74,6 +74,7 @@
 											<th>Longitude</th>
 											<th>Status</th>
 											<th>Webcam</th>
+											<th>Battery</th>
 										  </tr>
 										  <?
 
