@@ -7,10 +7,9 @@
                      <section>
                         <section class="vbox">
                            <section class="scrollable padder">
-                              <section class="row m-b-md">
+                              <section class="row m-b-md ">
                                  <div class="col-sm-6">
-                                    <h3 class="m-b-xs text-black">Welcome</h3>
-                                    <small> <?php echo $_SESSION['username']; ?></small>
+                                    <h3 class="m-b-xs text-black" style= "color: #672639; font-size:20px; font-family: inherit"><strong>Welcome,</strong></h3>
                                  </div>
                               </section>
 							  <!---- Primeiro quadrito ---->
@@ -52,7 +51,7 @@
 				  
 				   <div class="row bg-light dk m-b">
                                 
-                                 <div class="col-md-6">
+                                 <div class="col-md-7">
                                     <section>
                                        <header class="font-bold padder-v">
                                         
@@ -138,72 +137,164 @@
 					    
 					   </header>
 					  <body onload="load()">
-					<h1>Pandlets Location </h1>
-					<div id="map" style="width: 800px; height: 400px"></div>
+					<h4 style= "margin-top: 0px">Pandlets Location </h4>
+           
+					<div id="map" style="width: 650px; height: 400px"></div>
+               
 					</body>
 			
-				        
+
                                     </section>
+
                                  </div>
+                                                                   <div class="col-md-5" style="    padding-left: 3%;
+    padding-top: 2%;">
+                  <div class="container123 clearfix" style="margin-bottom:18px;">
+    <p class="location"></p>
+    <p class="temperature"></p>
+    <div class="climate_bg"><img src="images/Sun.svg"></div>
+    <div class="info_bg">
+      <img class="dropicon" src="images/Droplet.svg">
+      <p class="humidity"></p>
+
+      <img class="windicon" src="images/Wind.svg">
+      <div class="windspeed"></div>
+    </div>
+  </div>
+  <section class="panel b-light" style="width:398px;">
+                                       <header class="panel-heading"><strong>Calendar</strong></header>
+                                       <div id="calendar" class="bg-light dker m-l-n-xxs m-r-n-xxs"></div>
+                                      
+                                    </section>
+                 </div>
                               </div>
+                              <div>
+                              <style>
+
+                         table {
+                           width:107%;
+                           font-size:14px;
+                           font-family:Helvetica;
+                         }
+                         table, th, td {
+
+                           border-collapse: collapse;
+                         }
+                         th, td {
+                           padding: 7px;
+                           text-align: center;
+                         }
+                         table#t01 tr:nth-child(even) {
+                           background-color: #e9edf4;
+                         }
+                         table#t01 tr:nth-child(odd) {
+                           background-color:#B2ACAC;
+                         }
+                         table#t01 th {
+                           background-color: #976565;
+                           color: white;
+                         }
+                       </style>
+                      
+                       <table id="t01">
+                      <tr>
+                      <th>ID</th>
+                      <th>Username</th>   
+                      <th>Name</th>
+                      <th>Latitude</th>
+                      <th>Longitude</th>
+                      <th>Status</th>
+                      <th>Webcam</th>
+                      </tr>
+                      <?
+
+                    include("phpsqlajax_dbinfo.php");
+
+                    $conn_string = "host=$host dbname=$database user=$username password=$password" ;
+                    $conn = pg_connect($conn_string);  
+                    if(!$conn){
+                      die ("Could not open connection to database server");
+                    }
+                    $query = "SELECT * FROM setec.pandlets";
+                    $result = pg_query($conn, $query);
+                    if(!$result){
+                      die('Invalid query : ' . pg_last_error());
+                    }
+
+
+
+                    $i = 0;
+
+
+                    while ($row = pg_fetch_row($result)) 
+                    {
+                      echo '<tr>';
+                      $count = count($row);
+                      $y = 0;
+                      while ($y < $count)
+                      {
+                        
+                        $c_row = current($row);
+                        if($c_row == 'f' && $y==5)
+                        {
+                          echo '<td style="text-align:center;">' . 'Off'. '</td>';
+                        }
+                        else if($c_row == 't' && $y==5)
+                        {
+                          echo '<td style="text-align:center;">' . 'On'. '</td>';
+                        }
+                        else if($c_row == 'f' && $y==6)
+                        {
+                          echo '<td style="text-align:center;">' . 'No'. '</td>';
+                        }
+                        else if($c_row == 't' && $y==6)
+                        {
+                          echo '<td style="text-align:center;">' . 'Yes'. '</td>';
+                        }
+                        
+                      else{
+                        echo '<td style="text-align:center;">' . $c_row . '</td>';
+                      }
+                        
+                        next($row);
+                        $y = $y + 1;
+                      }
+                      echo '</tr>';
+                      $i = $i + 1;
+                    }
+                    pg_free_result($result);
+
+                    echo '</table>';
+                    ?>
+                              </div>
+
+   <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.0.0-beta1/jquery.min.js">  </script>
+   <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.simpleWeather/3.1.0/jquery.simpleWeather.min.js">  </script>
+   <script type="text/javascript">
+   $.simpleWeather({
+        location:"Oporto",
+        woied:"",
+        unit:'c',
+        success : function(weather){
+            city = weather.city;
+            temp = weather.temp +'&deg';
+            wcode = '<img class="weathericon" src="images/weathericons/'+ weather.code+'.svg">';
+            wind = '<p>'+weather.wind.speed + '</p><p>'+weather.units.speed+'</p>';
+            humidity = weather.humidity + '%';
+
+            $(".location").text(city);
+            $(".temperature").html(temp);
+            $(".climate_bg").html(wcode);
+            $(".windspeed").html(wind);
+            $(".humidity").html(humidity);
+        },
+        error: function(error){
+            $(".error").html('<p>'+ error+ '</p>')
+        }
+    });
+   </script>
 							 
-							      <!-- Statistics --> 
-								   <!--
-                              <div class="row bg-light dk m-b">
-                                 <div class="col-md-6 dker">
-                                    <section>
-                                       <header class="font-bold padder-v">
-                                          <div class="pull-right">
-                                             <div class="btn-group">
-                                                <button data-toggle="dropdown" class="btn btn-sm btn-rounded btn-default dropdown-toggle"> <span class="dropdown-label">Week</span> <span class="caret"></span> </button> 
-                                                <ul class="dropdown-menu dropdown-select">
-                                                   <li><a href="#"><input type="radio" name="b">Month</a></li>
-                                                   <li><a href="#"><input type="radio" name="b">Week</a></li>
-                                                   <li><a href="#"><input type="radio" name="b">Day</a></li>
-                                                </ul>
-                                             </div>
-                                             <a href="#" class="btn btn-default btn-icon btn-rounded btn-sm">Go</a> 
-                                          </div>
-                                          Statistics 
-                                       </header>
-                                       <div class="panel-body">
-                                          <div id="flot-sp1ine" style="height:210px"></div>
-                                       </div>
-                                       <div class="row text-center no-gutter">
-                                          <div class="col-xs-3"> <span class="h4 font-bold m-t block">5,860</span> <small class="text-muted m-b block">Orders</small> </div>
-                                          <div class="col-xs-3"> <span class="h4 font-bold m-t block">10,450</span> <small class="text-muted m-b block">Sellings</small> </div>
-                                          <div class="col-xs-3"> <span class="h4 font-bold m-t block">21,230</span> <small class="text-muted m-b block">Items</small> </div>
-                                          <div class="col-xs-3"> <span class="h4 font-bold m-t block">7,230</span> <small class="text-muted m-b block">Customers</small> </div>
-                                       </div>
-                                    </section>
-                                 </div> -->
-				 <!-- Analysis -->
-				 <!--
-                                 <div class="col-md-6">
-                                    <section>
-                                       <header class="font-bold padder-v">
-                                          <div class="btn-group pull-right">
-                                             <button data-toggle="dropdown" class="btn btn-sm btn-rounded btn-default dropdown-toggle"> <span class="dropdown-label">Last 24 Hours</span> <span class="caret"></span> </button> 
-                                             <ul class="dropdown-menu dropdown-select">
-                                                <li><a href="#"><input type="radio" name="a">Today</a></li>
-                                                <li><a href="#"><input type="radio" name="a">Yesterday</a></li>
-                                                <li><a href="#"><input type="radio" name="a">Last 24 Hours</a></li>
-                                                <li><a href="#"><input type="radio" name="a">Last 7 Days</a></li>
-                                                <li><a href="#"><input type="radio" name="a">Last 30 days</a></li>
-                                                <li><a href="#"><input type="radio" name="a">Last Month</a></li>
-                                                <li><a href="#"><input type="radio" name="a">All Time</a></li>
-                                             </ul>
-                                          </div>
-                                          Analysis 
-                                       </header>
-                                       <div class="panel-body flot-legend">
-                                          <div id="flot-pie-donut" style="height:240px"></div>
-                                       </div>
-                                    </section>
-                                 </div>
-				 
-                              </div> 
-							  -->
+					
 			      <!-- Calendar -->
                               <div class="row">
                                  <!--<div class="col-md-4">
@@ -217,11 +308,7 @@
                                     </section>
                                  </div>-->
                                  <div class="col-md-4">
-                                    <section class="panel b-light">
-                                       <header class="panel-heading"><strong>Calendar</strong></header>
-                                       <div id="calendar" class="bg-light dker m-l-n-xxs m-r-n-xxs"></div>
-                                      
-                                    </section>
+                                    
                                  </div>
                               </div>
                            </section>
@@ -288,6 +375,6 @@
             </section>
          </section>
       </section>
-      <!-- Bootstrap --> <!-- App --> <script src="js/app.v1.js"></script> <script src="js/charts/easypiechart/jquery.easy-pie-chart.js"></script> <script src="js/charts/sparkline/jquery.sparkline.min.js"></script> <script src="js/charts/flot/jquery.flot.min.js"></script> <script src="js/charts/flot/jquery.flot.tooltip.min.js"></script> <script src="js/charts/flot/jquery.flot.spline.js"></script> <script src="js/charts/flot/jquery.flot.pie.min.js"></script> <script src="js/charts/flot/jquery.flot.resize.js"></script> <script src="js/charts/flot/jquery.flot.grow.js"></script> <script src="js/charts/flot/demo.js"></script> <script src="js/calendar/bootstrap_calendar.js"></script> <script src="js/calendar/demo.js"></script> <script src="js/sortable/jquery.sortable.js"></script> <script src="js/app.plugin.js"></script>
+      <!-- Bootstrap --> <!-- App --> <script src="js/app.v1.js"></script> <script src="js/charts/easypiechart/jquery.easy-pie-chart.js"></script> <script src="js/charts/sparkline/jquery.sparkline.min.js"></script> <script src="js/charts/flot/jquery.flot.min.js"></script> <script src="js/charts/flot/jquery.flot.tooltip.min.js"></script> <script src="js/charts/flot/jquery.flot.spline.js"></script> <script src="js/charts/flot/jquery.flot.pie.min.js"></script> <script src="js/charts/flot/jquery.flot.resize.js"></script> <script src="js/charts/flot/jquery.flot.grow.js"></script>  <script src="js/calendar/bootstrap_calendar.js"></script> <script src="js/calendar/demo.js"></script> <script src="js/sortable/jquery.sortable.js"></script> <script src="js/app.plugin.js"></script>
    </body>
 </html>

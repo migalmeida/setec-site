@@ -9,6 +9,9 @@
       <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
       <link rel="stylesheet" href="css/app.v1.css" type="text/css" />
       <link rel="stylesheet" href="js/calendar/bootstrap_calendar.css" type="text/css" />
+      <link rel="stylesheet" href="css/index.css" type="text/css" />
+          <script src="http://code.jquery.com/jquery-1.8.3.min.js"></script>
+
       <!--[if lt IE 9]> <script src="js/ie/html5shiv.js"></script> <script src="js/ie/respond.min.js"></script> <script src="js/ie/excanvas.js"></script> <![endif]-->
 
       <script src="http://canvasjs.com/assets/script/canvasjs.min.js"></script>
@@ -22,10 +25,7 @@
                <li class="dropdown">
                   <a href="#" class="dropdown-toggle" data-toggle="dropdown"> <span class="thumb-sm avatar pull-left"> <img src="images/a0.png" alt="..."> </span> <?php echo $_SESSION['username']; ?> <b class="caret"></b> </a> 
                   <ul class="dropdown-menu animated fadeInRight">
-                     <li> <a href="profile.html">Profile</a> </li>
-                     <li> <a href="#"> <span class="badge bg-danger pull-right">3</span> Notifications </a> </li>
-                     <li> <a href="docs.html">Help</a> </li>
-                     <li class="divider"></li>
+                  
                      <li> <a href="logout.php">Logout</a> </li>
                   </ul>
                </li>

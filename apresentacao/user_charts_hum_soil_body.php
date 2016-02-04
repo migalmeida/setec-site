@@ -5,73 +5,67 @@
                 <section class="scrollable padder">
                     <section class="row m-b-md">
                         <div class="col-sm-6">
-                            <h3 class="m-b-xs text-black">Graph</h3>
-                            <small>Hello, <?php echo $_SESSION['username']; ?></small>
+                            <h3 class="m-b-xs text-black" style= "color: #672639; font-size:20px; font-family: inherit"><strong>Soil Humidity </strong> Data overview registed in the last 30 days </h3>
                         </div>
                     </section>
-                    <div class="row">
+<div class="row bg-light dk m-b">
+   <div class="col-md-6 dker">
+      <section>
+         <header class="font-bold padder-v" style= "text-align: center; font-family: inherit;">
+            Pandlet A
+         </header>
+         <div class="panel-body">
+            <div id="flot-sp1ine-pandlet-a" style="height: 210px; padding: 0px; position: relative;">
+            </div>
+         </div>
+         <div class="row text-center no-gutter">
+      </section>
+   </div>
+   <div class="col-md-6">
+      <section>
+         <header class="font-bold padder-v" style= "text-align: center; font-family: inherit;">
+            Pandlet B 
+         </header>
+         <div class="panel-body">
+            <div id="flot-sp1ine-pandlet-b" style="height: 210px; padding: 0px; position: relative;">
+            </div>
+         </div>
+         <div class="row text-center no-gutter">
+      </section>
+   </div>
+</div>
+<div class="row bg-light dk m-b">
+   <div class="col-md-6 dker">
+      <section>
+         <header class="font-bold padder-v" style= "text-align: center; font-family: inherit;">
+            Pandlet C
+         </header>
+         <div class="panel-body">
+            <div id="flot-sp1ine-pandlet-c" style="height: 210px; padding: 0px; position: relative;">
+            </div>
+         </div>
+         <div class="row text-center no-gutter">
+    
+         </div>
+      </section>
+   </div>
+   
 
-                        <div class="col-sm-3 hide">
-                            <section class="panel b-a">
-                                <header class="panel-heading b-b b-light">
-                                    <ul class="nav nav-pills pull-right">
-                                        <li> <a href="ajax.pie.html" class="text-muted" data-bjax data-target="#b-c"> <i class="i i-cycle"></i> </a> </li>
-                                        <li> <a href="#" class="panel-toggle text-muted"> <i class="i i-plus text-active"></i> <i class="i i-minus text"></i> </a> </li>
-                                    </ul>
-                                    Connection
-                                </header>
-                                <div class="panel-body text-center bg-light lter" id="b-c">
-                                    <div class="easypiechart inline m-b m-t" data-percent="60" data-line-width="4" data-bar-Color="#23aa8c" data-track-Color="#c5d1da" data-color="#2a3844" data-scale-Color="false" data-size="120" data-line-cap='butt' data-animate="2000">
-                                        <div>
-                                            <span class="h2 m-l-sm step"></span>%
-                                            <div class="text text-xs">completed</div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </section>
-                        </div>
-                    </div>
-                    <div class="row bg-light dk m-b">
-
-                        <div class="col-md-6">
-                            <section>
-                                <header class="font-bold padder-v">
-									 <?php
+                                    <?php
                                     include_once ("common/query.php");
-                                    $query2 = new query ();
-									$query = new query ();
-									
-
-									//for each (){}
-                                    $pandlets = $query2->getPandlet($_SESSION['username']);
-									
-									//$pandlets = $query2->getMaxMinHumSoil($result2[$i]);
-									
-									$pandlet=$pandlets[0];
-									
-                                    $result = $query->getMaxMinHumSoil($pandlets[0],$_SESSION['username']);
-									
+                                    $query = new query ();
+                                    $pandlet='A1';
+                                    //echo $pandlet;
+                                   $result = $query->getMaxMinHumSoil($pandlet);
+                                    // var_dump($result);
                                     ?>
-								<h1>Pandlet <?php echo $pandlets[0];?></h1>
-
-
-                                    <div id="chartContainer" style="height: 300px; width: 100%;"></div>
-
 
                                     <script type="text/javascript">
-											var function1 = function () {
-                                            var chart = new CanvasJS.Chart("chartContainer", {
+                                            var function1 = function () {
+                                            var chart = new CanvasJS.Chart("flot-sp1ine-pandlet-a", {
                                                 theme: "theme1",//theme2
-                                                backgroundColor: "#E4EEF2",
-                                                title:{
-                                                    text: "Humidity of the Soil register in the last 30 days",
-                                                    fontColor: "#2f4f4f",
-                                                    fontSize: 20,
-                                                    padding: 10,
-                                                    margin: 15,
-                                                    fontWeight: "bold"
-
-                                                },
+                                                backgroundColor: '#e0e6f0',
+                                            
                                                 animationEnabled: true,   // change to true
                                                 legend: {
                                                     cursor:"pointer",
@@ -83,7 +77,7 @@
                                                             e.dataSeries.visible = true;
                                                         }
                                                         chart.render();
-														
+                                                        
                                                     }
                                                 },
                                                 axisY: {
@@ -116,7 +110,7 @@
 
 
                                                         }
-                                                        str2 = "<span style = 'color:#000000 ; '><strong>"+e.entries[0].dataPoint.label + "</strong></span><br/>";
+                                                        str2 = "";
                                                         str3 = "<span style = 'color:#003300 '>Maximum temperature variation: </span><strong>" + -des + "</strong><br/>";
 
                                                         return (str2.concat(str)).concat(str3);
@@ -126,9 +120,9 @@
                                                 data: [
                                                     {
                                                         type: "spline",
-                                                        showInLegend: true,
+                                                        showInLegend: false,
                                                         name: "Maximum",
-                                                        color: "#009900  ",
+                                                        color: "#26124B  ",
                                                         dataPoints:  [
 
 
@@ -137,27 +131,28 @@
                                                             for($i=1; $row = pg_fetch_row($result); $i++) {
                                                                 echo "{ y:$row[2]},";
                                                             }
-															clearstatcache();
+                                                            clearstatcache();
                                                             ?>
 
                                                         ]
                                                     },
                                                     {
                                                         type: "spline",
-                                                        showInLegend: true,
+                                                        showInLegend: false,
                                                         name: "Minimum",
 
-                                                        color: "#99CC00 ",
+                                                        color: "#6D54E7 ",
                                                         dataPoints: [
 
                                                             <?php
                                                             include_once ("common/query.php");
-                                                              $query = new query ();
-															  
-                                                               $result = $query->getMaxMinHumSoil($pandlet,$_SESSION['username']);
+                                                            $query = new query ();
+                                                            $pandlet='A1';
+                                                            $result = $query->getMaxMinHumSoil($pandlet);
 
-                                                                for($j=1; $row = pg_fetch_row($result); $j++)
-                                                                    echo "{ y:$row[3], label:$j},"
+                                                            for($j=1; $row = pg_fetch_row($result); $j++){
+                                                                echo "{ y:$row[3], label:$j},";}
+                                                                clearstatcache();
                                                             ?>
 
                                                         ]
@@ -166,54 +161,33 @@
 
                                                 ]
                                             });
+
+                                          
                                             chart.render();
-	                                   }
-										
+                                              $(".canvasjs-chart-credit").remove();
+                                       }
+                                        
                                     </script>
 
-                                </header>
-
-                            </section>
-                        </div>
-
-                    </div>
                 
-					
-					<div class="row bg-light dk m-b">
-
-                        <div class="col-md-6">
-                            <section>
-                                <header class="font-bold padder-v">
-								<h1>Pandlet <?php echo $pandlets[1];?></h1>
-
-
 
                                     <?php
                                     include_once ("common/query.php");
                                     $query = new query ();
-									$pandlet=$pandlets[1];
-                                    $result = $query->getMaxMinHumSoil($pandlet,$_SESSION['username']);
-
+                                    $pandlet='B';
+                                    //echo $pandlet;
+                                   $result = $query->getMaxMinHumSoil($pandlet);
+                                    // var_dump($result);
                                     ?>
 
 
-                                    <div id="chartContainer2" style="height: 300px; width: 100%;"></div>
 
 
                                     <script type="text/javascript">
                                         var function2 = function () {
-                                            var chart2 = new CanvasJS.Chart("chartContainer2", {
+                                            var chart2 = new CanvasJS.Chart("flot-sp1ine-pandlet-b", {
                                                 theme: "theme1",//theme2
-                                                backgroundColor: "#E4EEF2",
-                                                title:{
-                                                    text: "Humidity of the Soil register in the last 30 days",
-                                                    fontColor: "#2f4f4f",
-                                                    fontSize: 20,
-                                                    padding: 10,
-                                                    margin: 15,
-                                                    fontWeight: "bold"
-
-                                                },
+                                                backgroundColor: "#e9edf4",
                                                 animationEnabled: true,   // change to true
                                                 legend: {
                                                     cursor:"pointer",
@@ -225,7 +199,7 @@
                                                             e.dataSeries.visible = true;
                                                         }
                                                         chart2.render();
-														
+                                                        
                                                     }
                                                 },
                                                 axisY: {
@@ -258,7 +232,7 @@
 
 
                                                         }
-                                                        str2 = "<span style = 'color:#000000 ; '><strong>"+e.entries[0].dataPoint.label + "</strong></span><br/>";
+                                                        str2 = "";
                                                         str3 = "<span style = 'color:#003300 '>Maximum temperature variation: </span><strong>" + -des + "</strong><br/>";
 
                                                         return (str2.concat(str)).concat(str3);
@@ -268,9 +242,9 @@
                                                 data: [
                                                     {
                                                         type: "spline",
-                                                        showInLegend: true,
+                                                        showInLegend: false,
                                                         name: "Maximum",
-                                                        color: "#009900  ",
+                                                        color: "#26124B  ",
                                                         dataPoints:  [
 
 
@@ -279,27 +253,28 @@
                                                             for($i=1; $row = pg_fetch_row($result); $i++) {
                                                                 echo "{ y:$row[2]},";
                                                             }
-															clearstatcache();
+                                                            clearstatcache();
                                                             ?>
 
                                                         ]
                                                     },
                                                     {
                                                         type: "spline",
-                                                        showInLegend: true,
+                                                        showInLegend: false,
                                                         name: "Minimum",
 
-                                                        color: "#99CC00 ",
+                                                        color: "#6D54E7 ",
                                                         dataPoints: [
 
                                                             <?php
-                                                             include_once ("common/query.php");
-                                                               $query = new query ();
-															   $pandlet = $pandlets[1];
-                                                               $result = $query->getMaxMinHumSoil($pandlet,$_SESSION['username']);
+                                                            include_once ("common/query.php");
+                                                            $query = new query ();
+                                                            $pandlet='C';
+                                                            $result = $query->getMaxMinHumSoil($pandlet);
 
-                                                                for($j=1; $row = pg_fetch_row($result); $j++)
-                                                                    echo "{ y:$row[3], label:$j},"
+                                                            for($j=1; $row = pg_fetch_row($result); $j++){
+                                                                echo "{ y:$row[3], label:$j},";}
+                                                                clearstatcache();
                                                             ?>
 
                                                         ]
@@ -309,55 +284,37 @@
                                                 ]
                                             });
                                             chart2.render();
-	                                   }
-										
+                                                                                          $(".canvasjs-chart-credit").remove();
+
+                                       }
+                                        
                                     </script>
 
-                                </header>
-
-                            </section>
-                        </div>
-
-                    </div>
                     
-					
-					<div class="row bg-light dk m-b">
-
-                        <div class="col-md-6">
-                            <section>
-                                <header class="font-bold padder-v">
-								<h1>Pandlet <?php echo $pandlets[2];?></h1>
-
-
+                    
+                    
 
                                     <?php
                                     include_once ("common/query.php");
                                     $query = new query ();
-									$pandlet=$pandlets[2];
-                                    $result = $query->getMaxMinHumSoil($pandlet,$_SESSION['username']);
-
+                                    $pandlet='C';
+                                    //echo $pandlet;
+                                   $result = $query->getMaxMinHumSoil($pandlet);
+                                    // var_dump($result);
                                     ?>
 
 
-                                    <div id="chartContainer3" style="height: 300px; width: 100%;"></div>
 
 
                                     <script type="text/javascript">
                                         window.onload = function () {
-											function1();
-											function2();
-                                            var chart3 = new CanvasJS.Chart("chartContainer3", {
+                                            function1();
+                                            function2();
+                                            var chart3 = new CanvasJS.Chart("flot-sp1ine-pandlet-c", {
                                                 theme: "theme1",//theme2
-                                                backgroundColor: "#E4EEF2",
-                                                title:{
-                                                    text: "Humidity of the Soil register in the last 30 days",
-                                                    fontColor: "#2f4f4f",
-                                                    fontSize: 20,
-                                                    padding: 10,
-                                                    margin: 15,
-                                                    fontWeight: "bold"
+                                                                                          backgroundColor: '#e0e6f0',
 
-                                                },
+                                                
                                                 animationEnabled: true,   // change to true
                                                 legend: {
                                                     cursor:"pointer",
@@ -369,7 +326,7 @@
                                                             e.dataSeries.visible = true;
                                                         }
                                                         chart3.render();
-														
+                                                        
                                                     }
                                                 },
                                                 axisY: {
@@ -402,7 +359,7 @@
 
 
                                                         }
-                                                        str2 = "<span style = 'color:#000000 ; '><strong>"+e.entries[0].dataPoint.label + "</strong></span><br/>";
+                                                        str2 = "";
                                                         str3 = "<span style = 'color:#003300 '>Maximum temperature variation: </span><strong>" + -des + "</strong><br/>";
 
                                                         return (str2.concat(str)).concat(str3);
@@ -412,9 +369,9 @@
                                                 data: [
                                                     {
                                                         type: "spline",
-                                                        showInLegend: true,
+                                                        showInLegend: false,
                                                         name: "Maximum",
-                                                        color: "#009900  ",
+                                                        color: "#26124B  ",
                                                         dataPoints:  [
 
 
@@ -423,27 +380,28 @@
                                                             for($i=1; $row = pg_fetch_row($result); $i++) {
                                                                 echo "{ y:$row[2]},";
                                                             }
-															clearstatcache();
+                                                            clearstatcache();
                                                             ?>
 
                                                         ]
                                                     },
                                                     {
                                                         type: "spline",
-                                                        showInLegend: true,
+                                                        showInLegend: false,
                                                         name: "Minimum",
 
-                                                        color: "#99CC00 ",
+                                                        color: "#6D54E7 ",
                                                         dataPoints: [
 
                                                             <?php
-                                                             include_once ("common/query.php");
-                                                               $query = new query ();
-															   $pandlet = $pandlets[2];
-                                                               $result = $query->getMaxMinHumSoil($pandlet,$_SESSION['username']);
+                                                            include_once ("common/query.php");
+                                                            $query = new query ();
+                                                            $pandlet='C';
+                                                            $result = $query->getMaxMinHumSoil($pandlet);
 
-                                                                for($j=1; $row = pg_fetch_row($result); $j++)
-                                                                    echo "{ y:$row[3], label:$j},"
+                                                            for($j=1; $row = pg_fetch_row($result); $j++){
+                                                                echo "{ y:$row[3], label:$j},";}
+                                                                clearstatcache();
                                                             ?>
 
                                                         ]
@@ -453,24 +411,13 @@
                                                 ]
                                             });
                                             chart3.render();
-	                                   }
-										
+                                                                                          $(".canvasjs-chart-credit").remove();
+
+                                       }
+                                        
                                     </script>
 
-                                </header>
-
-                            </section>
-                        </div>
-
-                    </div>
-					
-                    <div class="row">
-					
-					
-					
-					
-
-                    </div>
+                               
                 </section>
             </section>
         </section>

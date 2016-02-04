@@ -74,7 +74,6 @@
 											<th>Longitude</th>
 											<th>Status</th>
 											<th>Webcam</th>
-											<th>Battery</th>
 										  </tr>
 										  <?
 
@@ -85,8 +84,7 @@
 										if(!$conn){
 											die ("Could not open connection to database server");
 										}
-										$query = "SELECT * FROM setec.pandlets WHERE username = '".$_SESSION['username']."'";
-										//echo $_SESSION['username'];
+										$query = "SELECT * FROM setec.pandlets";
 										$result = pg_query($conn, $query);
 										if(!$result){
 											die('Invalid query : ' . pg_last_error());

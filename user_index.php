@@ -10,7 +10,6 @@ if(isset($_SESSION['username']))
   include_once ("apresentacao/user_header.php");
   include_once ("apresentacao/user_lateral_menu.php");
   include_once ("apresentacao/user_overview_body.php");
-  include_once ("apresentacao/user_index.php");
  
  
  

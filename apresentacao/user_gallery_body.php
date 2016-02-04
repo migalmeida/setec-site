@@ -33,47 +33,48 @@
                     </div>
                     <div class="row bg-light dk m-b">
 
-                       
+                        <div class="col-md-6">
                             <section>
                                 <header class="font-bold padder-v">
-         
+
+
+                              
+																	  
+
+                            
 							<head>
 
 							<style type="text/css">
 							body {
-								background: #eee;
-								color: #44;
+								background: #222;
+								color: #eee;
 								margin-top: 20px;
 								font-family: Arial, "Helvetica Neue", Helvetica, sans-serif;
 							}
 							a {
-								color: #444;
+								color: #FFF;
 							}
 							a:hover {
 								color: yellow;
 								text-decoration: underline;
 							}
 							.thumbnails img {
-								height: 75px;
-								width: 75px;
-								border: 0;
-								border-radius: 10px;
-								//padding: 1px;
-								margin: 0 1px 2px 0;
+								height: 80px;
+								border: 4px solid #555;
+								padding: 1px;
+								margin: 0 10px 10px 0;
 							}
 
 							.thumbnails img:hover {
-								border: 4px solid #843737;
+								border: 4px solid #00ccff;
 								cursor:pointer;
 							}
 
 							.preview img {
-								border: 0;
-								border-radius: 5px;
-								//padding:2pxpx;
-								width: 450px;
+								border: 4px solid #444;
+								padding:5pxpx;
+								width: 800px;
 							}
-							
 							</style>
 							
 							         <?php
@@ -91,12 +92,6 @@
 							<script>if (Galleria) { $("body").text('Galleria works') }</script>
 							
 							<? if (sizeof($result) > 0) :?>
-<<<<<<< HEAD
-								<div class="preview" align="center">
-									<img name="preview" src="<?php echo $result[0] ?>" alt=""/>
-								</div>
-=======
->>>>>>> origin/master
 
 							<div class="gallery" align="center">
 								
@@ -108,19 +103,13 @@
 									<?php
 										$end = sizeof($result);
 										for($i = 0; $i < $end; $i++){
-<<<<<<< HEAD
-											echo "<img name=\"img".$i."\" onClick=\"preview.src='".$result[$i]."'\" src=\"".$result[$i]."\">";
-=======
 											echo "<img name=\"img".$i."\" onmouseover=\"preview.src='".$result[$i]."'\" src=\"".$result[$i]."\">";
->>>>>>> origin/master
 										}
 									?>
 							
 									</div><br/>
 								</div><br/>
 
-<<<<<<< HEAD
-=======
 								<div class="preview" align="center">
 									<img name="preview" src="<?php echo $result[0] ?>" alt=""/>
 								</div>
@@ -131,12 +120,7 @@
 
 							</div>
 
->>>>>>> origin/master
 
-								
-							<? else : ?>
-								<p>Não há imagens</p>
-							<? endif; ?>
 							</body>
 							
                                 </header>
@@ -162,3 +146,4 @@
 <!-- Bootstrap --> <!-- App --> <script src="js/app.v1.js"></script> <script src="js/charts/easypiechart/jquery.easy-pie-chart.js"></script> <script src="js/charts/sparkline/jquery.sparkline.min.js"></script> <script src="js/charts/flot/jquery.flot.min.js"></script> <script src="js/charts/flot/jquery.flot.tooltip.min.js"></script> <script src="js/charts/flot/jquery.flot.spline.js"></script> <script src="js/charts/flot/jquery.flot.pie.min.js"></script> <script src="js/charts/flot/jquery.flot.resize.js"></script> <script src="js/charts/flot/jquery.flot.grow.js"></script> <script src="js/charts/flot/demo.js"></script> <script src="js/calendar/bootstrap_calendar.js"></script> <script src="js/calendar/demo.js"></script> <script src="js/sortable/jquery.sortable.js"></script> <script src="js/app.plugin.js"></script> <script src="js/galleria/galleria-1.4.2.min.js"></script>
 </body>
 </html>
+

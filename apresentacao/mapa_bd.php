@@ -7,14 +7,11 @@ $node = $dom->createElement("pandlets");
 $parnode = $dom->appendChild($node);
 // Opens a connection to a pgSQL server
 $conn_string = "host=$host dbname=$database user=$username password=$password" ;
-$conn = pg_connect($conn_string); 
- 
+$conn = pg_connect($conn_string);  
 if(!$conn){
     die ("Could not open connection to database server");
 }
-
 $query = "SELECT * FROM setec.pandlets";
-
 $result = pg_query($conn, $query);
 if(!$result){
     die('Invalid query : ' . pg_last_error());
