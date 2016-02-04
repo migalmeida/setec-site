@@ -85,7 +85,8 @@
 										if(!$conn){
 											die ("Could not open connection to database server");
 										}
-										$query = "SELECT * FROM setec.pandlets";
+										$query = "SELECT * FROM setec.pandlets WHERE username = '".$_SESSION['username']."'";
+										//echo $_SESSION['username'];
 										$result = pg_query($conn, $query);
 										if(!$result){
 											die('Invalid query : ' . pg_last_error());
