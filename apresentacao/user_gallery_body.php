@@ -91,12 +91,9 @@
 							<script>if (Galleria) { $("body").text('Galleria works') }</script>
 							
 							<? if (sizeof($result) > 0) :?>
-<<<<<<< HEAD
 								<div class="preview" align="center">
 									<img name="preview" src="<?php echo $result[0] ?>" alt=""/>
 								</div>
-=======
->>>>>>> origin/master
 
 							<div class="gallery" align="center">
 								
@@ -108,30 +105,13 @@
 									<?php
 										$end = sizeof($result);
 										for($i = 0; $i < $end; $i++){
-<<<<<<< HEAD
 											echo "<img name=\"img".$i."\" onClick=\"preview.src='".$result[$i]."'\" src=\"".$result[$i]."\">";
-=======
-											echo "<img name=\"img".$i."\" onmouseover=\"preview.src='".$result[$i]."'\" src=\"".$result[$i]."\">";
->>>>>>> origin/master
 										}
 									?>
 							
 									</div><br/>
 								</div><br/>
 
-<<<<<<< HEAD
-=======
-								<div class="preview" align="center">
-									<img name="preview" src="<?php echo $result[0] ?>" alt=""/>
-								</div>
-								
-							<? else : ?>
-								<p>Não há imagens</p>
-							<? endif; ?>
-
-							</div>
-
->>>>>>> origin/master
 
 								
 							<? else : ?>
