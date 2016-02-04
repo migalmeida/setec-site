@@ -46,13 +46,13 @@
 
 							<style type="text/css">
 							body {
-								background: #222;
-								color: #eee;
+								background: #eee;
+								color: #44;
 								margin-top: 20px;
 								font-family: Arial, "Helvetica Neue", Helvetica, sans-serif;
 							}
 							a {
-								color: #FFF;
+								color: #444;
 							}
 							a:hover {
 								color: yellow;
@@ -60,20 +60,23 @@
 							}
 							.thumbnails img {
 								height: 80px;
-								border: 4px solid #555;
-								padding: 1px;
-								margin: 0 10px 10px 0;
+								width: 80px;
+								border: 0;
+								border-radius: 10px;
+								//padding: 1px;
+								margin: 0 1px 2px 0;
 							}
 
 							.thumbnails img:hover {
-								border: 4px solid #00ccff;
+								border: 4px solid #843737;
 								cursor:pointer;
 							}
 
 							.preview img {
-								border: 4px solid #444;
-								padding:5pxpx;
-								width: 800px;
+								border: 0;
+								border-radius: 5px;
+								//padding:2pxpx;
+								width: 700px;
 							}
 							</style>
 							
@@ -103,7 +106,7 @@
 									<?php
 										$end = sizeof($result);
 										for($i = 0; $i < $end; $i++){
-											echo "<img name=\"img".$i."\" onmouseover=\"preview.src='".$result[$i]."'\" src=\"".$result[$i]."\">";
+											echo "<img name=\"img".$i."\" onClick=\"preview.src='".$result[$i]."'\" src=\"".$result[$i]."\">";
 										}
 									?>
 							
