@@ -24,7 +24,7 @@
 		} else
 		{
 			$var = pg_fetch_result($result, 0, 'pass');
-			if($pass_md5 == $var)
+			if($password == $var)
 			{
 				$_SESSION['tipo'] = 'Normal User';
 				$_SESSION['username'] = $login;
